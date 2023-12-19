@@ -1,0 +1,38 @@
+
+.app-header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+}
+
+.logo {
+  width: 40px;
+  height: 40px; 
+  margin-right: 10px;
+}
+
+.default {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.default span{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.newColor:hover {
+  color: rgb(82, 82, 231);
+}
