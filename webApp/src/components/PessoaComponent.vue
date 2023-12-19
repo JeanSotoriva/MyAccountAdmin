@@ -13,7 +13,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(usuario, index) in displayedRecords()" :key="index">
+        <tr v-for="(usuario, index) in usuarios" :key="index">
           <td>{{ usuario.nome }}</td>
           <td>{{ usuario.cpf }}</td>
           <!-- <td>{{ usuario.cidade }}</td> -->
@@ -32,7 +32,7 @@
     </table>
     <Pagination
       v-model="page"
-      :records="usuarios.length"     
+      :records="10"     
       :per-page="perPage"
       @paginate="handlePagination"
     />

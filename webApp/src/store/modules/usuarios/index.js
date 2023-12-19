@@ -117,9 +117,15 @@ export default {
         
         deleteUsuarios ({ commit }, params) {
             return axios.delete(`${URI_BASE_API}/usuario/${params.cpf}`)
-            .then(response => commit('DELETE_USUARIOS', response.data))
-            .catch(err => err.response.data)
-            .finally(() => commit('SET_PRELOADER', false))
+            .then(response => {
+                commit('DELETE_USUARIOS', response.data)
+                commit('SET_PRELOADER', false)
+                return response.data
+            })
+            .catch(err => {
+                commit('SET_PRELOADER', false)
+                err.response.data
+            })
         },
 
         getCeps({ commit }, cep) {
@@ -128,13 +134,10 @@ export default {
             return axios.get(`${URI_BASE_API}/cep/${cep}`) 
                 .then(response => {
                     commit('SET_CEP_INPUT', response.data)
-                    commit('SET_PRELOADER', false)
+                    commit('SET_PRELOADER', false);
                     return response.data
                 })
-                .catch(err => {
-                    commit('SET_PRELOADER', false)
-                    err.response.data
-                })
+                .finally(() => commit('SET_PRELOADER', false))
         },
 
     },

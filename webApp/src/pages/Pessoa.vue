@@ -127,9 +127,15 @@ export default {
         })
         },
         buscarCep(cep) {
+            if(!cep){
+                return this.$toast.open({
+                    message: 'Preencha o cep!',
+                    type: 'error',
+                    duration: '3000',
+                })
+            }
             this.getCeps(cep)
             .then(response => {
-                console.log(response)
                 this.$toast.open({
                     message: response.message,
                     type: response.success ? 'success' : 'error',

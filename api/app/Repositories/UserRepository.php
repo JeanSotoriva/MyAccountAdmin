@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\User;
+use App\Models\Endereco;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -39,6 +40,13 @@ class UserRepository
     public function findUser($request){
         $user = User::where('cpf', $request)->first();
         return $user;
+    }
+
+    public function userHasEndereco($cpf)
+    {
+        $user = User::where('cpf', $cpf)->first();
+        $endereco = Endereco::where('usuario_id', $user->id)->first();
+        return $endereco;
     }
 
 }

@@ -48,6 +48,9 @@ class UserService extends ResponseController
         if ($hasConta) {
             return $this->sendError('Pessoa possui conta vinculada', '', 404);
         }
+        if($hasEndereco = $this->repository->userHasEndereco($request)){
+            $hasEndereco->delete();
+        }
         $user->delete();
         return $this->sendResponse('Usuário excluído com sucesso.', 'success',  200);
     }

@@ -25,12 +25,12 @@ class CepService extends ResponseController
     public function getCep($request)
     {
         if($request > 99999999){
-            return response()->json(['message' => 'O Cep deve conter 8 digitos!'], 404);
+            return $this->sendError('O Cep deve conter 8 digitos!', '', 404);    
         }
         $cep = $this->repository->findCep($request);
 
         if (!$cep) {
-            return response()->json(['message' => 'Cep não encontrado!'], 404);
+            return $this->sendError('Cep não encontrado!', '', 404);    
         }
         return $this->sendResponse($cep,'Cep Encontrado com sucesso!', 200);
     }
@@ -48,7 +48,7 @@ class CepService extends ResponseController
         }
         $cep_criado = $this->repository->createCep($request);
         if(!$cep_criado){
-            return response()->json(['error' => 'Não foi possível cadastrar o Cep'], 404);
+            return $this->sendError('Não foi possível cadastrar o Cep', '', 404);  
         }
         return $this->sendResponse($cep_criado, 'Cep criado com Sucesso!', 201);
     }
@@ -67,7 +67,7 @@ class CepService extends ResponseController
         }
         $enderecoCriado = $this->repository->createEndereco($request);
         if(!$enderecoCriado){
-            return response()->json(['error' => 'Não foi possível cadastrar o Endereco'], 404);
+            return $this->sendError('Não foi possível cadastrar o Endereco', '', 404);  
         }
         return $this->sendResponse($enderecoCriado, 'Endereco criado com Sucesso!', 201);
         
