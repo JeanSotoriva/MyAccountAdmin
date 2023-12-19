@@ -136,12 +136,12 @@ export default {
             }
             this.getCeps(cep)
             .then(response => {
+                console.log(response)
                 this.$toast.open({
                     message: response.message,
                     type: response.success ? 'success' : 'error',
                     duration: '3000',
                 })
-                this.getUsuarios();
             })
         }
     },

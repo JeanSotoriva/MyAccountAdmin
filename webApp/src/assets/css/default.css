@@ -24,7 +24,8 @@
 .default {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: left;
+  padding-left: 300px;
   width: 100%;
 }
 

@@ -84,6 +84,7 @@ export default {
         ...mapActions([
             'getMovimentacoes',
             'storeMovimentacoes',
+            'getContas'
         ]),
     
         getExtratos() {
@@ -109,6 +110,7 @@ export default {
                 })
                 this.campos.valor = 0
                 this.getExtratos(); 
+                this.getContas();
             }) 
         },
     },

@@ -122,10 +122,8 @@ export default {
                 commit('SET_PRELOADER', false)
                 return response.data
             })
-            .catch(err => {
-                commit('SET_PRELOADER', false)
-                err.response.data
-            })
+            .catch(err => err.response.data)
+            .finally(() => commit('SET_PRELOADER', false))
         },
 
         getCeps({ commit }, cep) {
@@ -137,6 +135,7 @@ export default {
                     commit('SET_PRELOADER', false);
                     return response.data
                 })
+                .catch(err => err.response.data)
                 .finally(() => commit('SET_PRELOADER', false))
         },
 
