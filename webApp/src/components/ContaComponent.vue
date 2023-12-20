@@ -7,7 +7,6 @@
           <th>Nome</th>
           <th>CPF</th>
           <th>Numero da Conta</th>
-          <th>Editar</th>
           <th>Excluir</th>
         </tr>
       </thead>
@@ -16,11 +15,6 @@
           <td>{{ conta.nome }}</td>
           <td>{{ conta.cpf }}</td>
           <td>{{ conta.conta }}</td>
-          <td>
-            <button @click="editConta(conta.conta)" class="edit-button">
-              <i class="fas fa-edit"></i>
-            </button>
-          </td>
           <td>
             <button @click="deleteConta(conta.conta)" class="delete-button">
               <i class="fas fa-trash-alt"></i>

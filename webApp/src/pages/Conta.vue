@@ -12,9 +12,11 @@
                     <label for="exampleInputEmail1" class="form-label">Numero da Conta</label>
                     <input v-model="campos.conta" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 </div>
-                <button @click="cadastrar" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 inline-block m-5">
-                    Salvar
-                </button>
+                <div class="col d-flex justify-content-center">
+                    <button @click="cadastrar" class="w-[300px] bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 inline-block m-5">
+                        Salvar
+                    </button>
+                </div>
             </div>
             <div class="col-lg-12">
                 <div class="row my-4 j1">
