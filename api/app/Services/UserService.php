@@ -9,6 +9,8 @@ use App\Http\Controllers\Api\ResponseController as ResponseController;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use LaravelLegends\PtBrValidator\Rules\FormatoCpf;
 
 
 class UserService extends ResponseController
@@ -30,6 +32,18 @@ class UserService extends ResponseController
 
     public function updateUsuario(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'cpf' => ['required', new FormatoCpf()],
+            'nome' => 'required|string|max:255',
+            'data_nascimento' => 'required',
+        ]);
+        if ($validator->fails()) {
+            $errors = $validator->getMessageBag()->toArray();
+            if (isset($errors['cpf'])) {
+                return $this->sendError('Cpf Inválido!', $errors['cpf']);
+            }
+            return $this->sendError('Preencha os dados corretamente!', $errors);
+        }
         $user = $this->repository->updateUsuario($request);
         return $this->sendResponse([
             'cpf' => $user->cpf,
