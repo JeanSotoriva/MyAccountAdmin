@@ -31,8 +31,8 @@
 
         <div class="p-4 rounded-lg overflow-hidden shadow-lg bg-white ">
             <h3 class="text-lg font-semibold mb-2">Informações</h3>
-            <p>Ultimos cadastros de usuarios</p>
-            <p>Ultimas informações de contas</p>
+            <p>Cadastro de Cep via Postman</p>
+            <p>Busca de Cep</p>
             <p>Outras informações</p>
         </div>
     </div>

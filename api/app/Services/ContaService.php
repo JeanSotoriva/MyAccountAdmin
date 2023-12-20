@@ -75,6 +75,10 @@ class ContaService extends ResponseController
         if (!$conta) {
             return response()->json(['error' => 'Essa conta não existe!'], 404);
         }
+        if($hasMovimentacao = $this->repository->contaHasMovimentacao($conta)){
+            // $hasMovimentacao->delete();
+            $conta->movimentacoes()->delete();
+        }
         $conta->delete();
         return $this->sendResponse('Conta deletada com sucesso!.', 'success', 200);
     }

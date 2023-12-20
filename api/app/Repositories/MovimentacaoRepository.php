@@ -24,7 +24,6 @@ class MovimentacaoRepository
 
     public function depositar(Request $request)
     {
-        $dataMovimentacao = now()->format('Y-m-d H:i:s');
         $conta = Conta::where('conta', $request->conta)->first();
         $deposito = $request['valor'];
         $conta->saldo += $deposito;
@@ -33,7 +32,6 @@ class MovimentacaoRepository
             'num_conta' => $request->conta,
             'acao' => 'depositar',
             'valor' => $request->valor,
-            'data_movimentacao' => $dataMovimentacao,
         ]);
         return $deposito;
     }
@@ -48,7 +46,6 @@ class MovimentacaoRepository
             'num_conta' => $request->conta,
             'acao' => 'depositar',
             'valor' => -abs($request->valor),
-            'data_movimentacao' => now(),
         ]);
         return $saque;
     }

@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -16,7 +17,7 @@ return new class extends Migration
         Schema::create('movimentacoes', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger('num_conta');
-            $table->timestamp('data_movimentacao')->nullable();
+            $table->timestamp('data_movimentacao')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->string('acao');
             $table->double('valor');
             $table->timestamps();

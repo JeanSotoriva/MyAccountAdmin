@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Movimentacao;
 use App\Models\Conta;
 use App\Http\Controllers\Controller;
 use GuzzleHttp\Psr7\Request as Psr7Request;
@@ -67,6 +68,12 @@ class ContaRepository
     {
         $conta = Conta::where('conta', $numConta)->first();
         return $conta->saldo;
+    }
+
+    public function contaHasMovimentacao($conta)
+    {
+        $movimentacao = Movimentacao::where('num_conta', $conta->conta)->first();
+        return $movimentacao;
     }
 
 }

@@ -33,6 +33,6 @@ class Movimentacao extends Model
     ];
 
     public function conta(){
-        return $this->belongsTo(Conta::class);
+        return $this->belongsTo(Conta::class, 'num_conta', 'conta');;
     }
 }
