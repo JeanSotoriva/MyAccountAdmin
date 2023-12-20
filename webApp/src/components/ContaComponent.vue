@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr  v-for="(conta, index) in displayedRecords()" :key="index">
+        <tr  v-for="(conta, index) in contas" :key="index">
           <td>{{ conta.nome }}</td>
           <td>{{ conta.cpf }}</td>
           <td>{{ conta.conta }}</td>
@@ -31,7 +31,7 @@
     </table>
     <Pagination
       v-model="page"
-      :records="contas.length"     
+      :records="10"     
       :per-page="perPage"  
       @paginate="handlePagination"
     />
@@ -94,17 +94,6 @@
           this.getContas();
         })
       },
-      displayedRecords() {
-        console.log(this.contas)
-        const startIndex = this.perPage * (this.page - 1);
-        const endIndex = startIndex + this.perPage;
-        try {
-          return this.contas.slice(startIndex, endIndex);
-        } catch (error) {
-          return this.contas
-        } 
-        
-      }
     },
 
     components: {

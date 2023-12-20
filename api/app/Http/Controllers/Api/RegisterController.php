@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use LaravelLegends\PtBrValidator\Rules\FormatoCpf;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\ResponseController as ResponseController;
 use App\Models\User;
@@ -20,13 +21,16 @@ class RegisterController extends ResponseController
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'cpf' => 'required',
-            'nome' => 'required',
+            'cpf' => ['required', new FormatoCpf()],
+            'nome' => 'required|string|max:255',
             'data_nascimento' => 'required',
         ]);
-   
-        if($validator->fails()){
-            return $this->sendError('Preencha os dados !', $validator->errors());       
+        if ($validator->fails()) {
+            $errors = $validator->getMessageBag()->toArray();
+            if (isset($errors['cpf'])) {
+                return $this->sendError('Cpf Inválido!', $errors['cpf']);
+            }
+            return $this->sendError('Preencha os dados corretamente!', $errors);
         }
    
         $data = $request->all();
@@ -35,7 +39,6 @@ class RegisterController extends ResponseController
             return $this->sendError('O usuário já existe.', 'error', 400);
         }
  
-        // $data['password'] = bcrypt($data['password']);
         $user = User::create($data);
         $success['id'] =  $user->id;
         $success['cpf'] =  $user->cpf;

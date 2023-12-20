@@ -52,7 +52,7 @@ class UserService extends ResponseController
             $hasEndereco->delete();
         }
         $user->delete();
-        return $this->sendResponse('Usuário excluído com sucesso.', 'success',  200);
+        return $this->sendResponse('', 'Usuário excluído com sucesso!',  200);
     }
     
 }
