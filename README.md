@@ -1,23 +1,4 @@
-
-### Será avaliado
-- Facilidade no entendimento do código.
-- Complexidade ciclomática do código.
-- Divisão de responsabilidades das classes.
-- Reutilização de código.
-- Organização do projeto;
-- Qualidade dos testes unitários implementados.
-- Cobertura dos testes unitários.
-- Desenvolvimento e funcionamento dos requisitos propostos.
-- Utilização e configuração dos containers docker.
-- Criatividade e inovação na solução proposta.
-- Usabilidade do usuário.
-
-### Informações extras
-- Descreva ao final deste documento (Readme.md) o detalhamento de funcionalidades implementadas, sejam elas já descritas na modelagem e / ou extras.
-- Detalhar também as funcionalidades que não conseguiu implementar e o motivo.
-- Caso tenha adicionado novas libs ou frameworks, descreva quais foram e porque dessa agregação.
-
-__(Escreva aqui as instruções para que possamos corrigir sua prova, bem como qualquer outra observação sobre a prova que achar pertinente compartilhar)__
+### Descrição da prova
 
 * Foi criada uma Api com todos os endpoints descritos no enunciado.
 * Foi criado uma Aplicação Web seguindo todas as telas do enunciado.
@@ -27,7 +8,14 @@ __(Escreva aqui as instruções para que possamos corrigir sua prova, bem como q
 - Vuejs ( vuex , Axios)
 - Foi criado Migrations, Seeders, Repositories e Services no backend.
 
-* melhorias :
 
-- registrando moviemntações nulo
-- cadastro de conta.
+### Subir a aplicacao:
+
+* como o projeto é dividido em backend e frontend, cada um tem seus docker-compose.yml
+* 1 - entrar com terminal em /api e executar `docker-compose build`  e depois `docker-compose up`
+* 2 - entrar com terminal em /webApp e executar `docker-compose build`  e depois `docker-compose up`
+
+* Acessar `https://localhost/8080` para acessar o frontend.
+* Acessar `https://localhost/8988/api` no google para testar se esta "ok" a api.
+* Acessar o container da api em outro terminal dentro de /api executando `docker-compose exec -it -u root app sh`
+* Executar os comandos da migration :  `php artisan migrate:migration`
