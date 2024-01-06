@@ -1,8 +1,10 @@
 ### Descrição da prova
 
-* Foi criada uma Api com todos os endpoints descritos no enunciado.
-* Foi criado uma Aplicação Web seguindo todas as telas do enunciado.
-* As tecnologias utilizadas foram:
+* Foi criada uma Api com seguindo padrões REST com várias regras de validação.
+* Foi criado uma Aplicação Web como área de administração de contas, usuarios e movimentações.
+
+### As tecnologias utilizadas foram:
+
 - Docker
 - Php/Laravel
 - Vuejs ( vuex , Axios)
@@ -11,7 +13,7 @@
 
 ### Subir a aplicacao:
 
-* como o projeto é dividido em backend e frontend, cada um tem seus docker-compose.yml
+* O projeto é dividido em backend e frontend, cada um tem seus docker-compose.yml
 * 1 - entrar com terminal em /api e executar `docker-compose build`  e depois `docker-compose up`
 * 2 - entrar com terminal em /webApp e executar `docker-compose build`  e depois `docker-compose up`
 
